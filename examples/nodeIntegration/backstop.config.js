@@ -3,9 +3,19 @@ module.exports = options => {
     id: `${options.project}_test`,
     viewports: [
       {
+        name: 'mobile',
+        width: 425,
+        height: 678
+      },
+      {
         name: 'tablet',
-        width: 1024,
-        height: 768
+        width: 768,
+        height: 678
+      },
+      {
+        name: 'laptop',
+        width: 1280,
+        height: 800
       }
     ],
     scenarios: options.scenarios,
