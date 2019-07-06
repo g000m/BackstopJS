@@ -1,14 +1,26 @@
 // const _ = require('lodash');
 const args = require('yargs').argv;
 const backstop = require('backstopjs');
+let projectConfig;
 
-let projectConfig = require('./backstop.config.js')({
+projectConfig = require('./backstop.config.js')({
   'project': args.p,
   'scenarios': setScenariosForProject()
 });
 
+// if (args.c) {
+//   projectConfig = JSON.parse(args.c);
+// }
+
 if (args.c) {
-  projectConfig = JSON.parse(args.c);
+  const configFile = args.c;
+  // projectConfig =
+
+  var fs = require('fs');
+  const content = fs.readFileSync(configFile);
+  let config = JSON.parse(content);
+  config.id = args.p;
+  projectConfig.scenarios = config.scenarios;
 }
 
 let commandToRun = '';
