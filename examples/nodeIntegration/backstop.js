@@ -54,7 +54,6 @@ function setScenariosForProject () {
   ];
 
   return urls.map(url => {
-
     return {
       'label': url.label,
       'url': url.url,
@@ -62,5 +61,4 @@ function setScenariosForProject () {
       'misMatchThreshold': 0.1
     };
   });
-
 }
