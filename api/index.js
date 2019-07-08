@@ -12,10 +12,10 @@ app.get('/', function (req, res) {
   console.log('slash');
   res.end('s-end');
 });
-app.post('/test', function (req, res) {
+app.post('/project/:testId/:command', function (req, res) {
   var config = req.body.config;
-  var test = req.body.test;
-  var id = req.body.id;
+  var command = req.params.command.toString();
+  var id = req.params.testId.toString();
   let commandToRun;
   let projectConfig;
 
@@ -25,8 +25,8 @@ app.post('/test', function (req, res) {
   });
 
   const testOptions = [ 'test', 'reference', 'openReport' ];
-  if (req.body.test && testOptions.indexOf(req.body.test) >= 0) {
-    commandToRun = req.body.test;
+  if (command && testOptions.indexOf(command) >= 0) {
+    commandToRun = command;
   }
 
   if (commandToRun !== '') {
@@ -38,27 +38,3 @@ app.post('/test', function (req, res) {
 app.listen(3000, function () {
   console.log('Started on PORT 3000');
 });
-
-function setScenariosForProject (config) {
-  const urls = [
-    {
-      'label': 'Home',
-      'url': 'https://www.google.com/'
-    },
-    {
-      'label': 'Result',
-      'url': 'https://www.google.com/search?q=news'
-    }
-  ];
-
-  return urls.map(url => {
-
-    return {
-      'label': url.label,
-      'url': url.url,
-      'delay': 2000,
-      'misMatchThreshold': 0.1
-    };
-  });
-
-}
