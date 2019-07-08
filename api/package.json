@@ -1,0 +1,16 @@
+{
+  "name": "backstopjs-express-wrapper",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Gabe Herbert",
+  "license": "ISC",
+  "devDependencies": {
+    "backstopjs": "^4.1.9",
+    "body-parser": "^1.19.0"
+  },
+  "dependencies": {}
+}
