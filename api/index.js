@@ -32,7 +32,7 @@ app.post('/project/:testId/:command', function (req, res) {
   if (commandToRun !== '') {
     backstop(commandToRun, { config: projectConfig });
   }
-  res.end('OK');
+  res.end(JSON.stringify({ message: 'tests started' }));
 });
 
 app.listen(3000, function () {
